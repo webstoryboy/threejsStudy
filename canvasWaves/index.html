@@ -24,151 +24,151 @@
 <body>
     <canvas id="testCanvas"></canvas>
     <script>
-        class Point {
-            constructor(index, x, y) {
-                this.x = x;
-                this.y = y;
-                this.maxY = y;
-                this.speed = 0.05;
-                this.currentPos = index;
-                this.maxHeight = Math.random() * 100 + 10;
-            }
+    class Point {
+        constructor(index, x, y) {
+            this.x = x;
+            this.y = y;
+            this.maxY = y;
+            this.speed = 0.05;
+            this.currentPos = index;
+            this.maxHeight = Math.random() * 100 + 10;
+        }
 
-            update() {
-                this.currentPos += this.speed;
-                this.y = this.maxY + Math.sin(this.currentPos) * this.maxHeight;
+        update() {
+            this.currentPos += this.speed;
+            this.y = this.maxY + Math.sin(this.currentPos) * this.maxHeight;
+        }
+    }
+
+    class Wave {
+        constructor(index, totalPoints, color) {
+            this.index = index;
+            this.totalPoints = totalPoints;
+            this.color = color;
+            this.points = [];
+        }
+
+        resize(canvasWidth, canvasHeight) {
+            this.width = canvasWidth;
+            this.height = canvasHeight;
+
+            this.centerX = canvasWidth / 2;
+            this.centerY = canvasHeight / 2;
+
+            this.pointGap = this.width / (this.totalPoints - 1);
+
+            this.init();
+        }
+
+        init() {
+            this.points = [];
+
+            for (let i = 0; i < this.totalPoints; i++) {
+                const point = new Point(
+                    this.index + i,
+                    this.pointGap * i,
+                    this.centerY + this.centerY / 2
+                );
+                this.points[i] = point;
             }
         }
 
-        class Wave {
-            constructor(index, totalPoints, color) {
-                this.index = index;
-                this.totalPoints = totalPoints;
-                this.color = color;
-                this.points = [];
-            }
+        draw(ctx) {
+            ctx.beginPath();
+            ctx.fillStyle = this.color;
 
-            resize(canvasWidth, canvasHeight) {
-                this.width = canvasWidth;
-                this.height = canvasHeight;
+            let prevX = this.points[0].x;
+            let prevY = this.points[0].y;
 
-                this.centerX = canvasWidth / 2;
-                this.centerY = canvasHeight / 2;
+            ctx.moveTo(prevX, prevY);
 
-                this.pointGap = this.width / (this.totalPoints - 1);
-
-                this.init();
-            }
-
-            init() {
-                this.points = [];
-
-                for (let i = 0; i < this.totalPoints; i++) {
-                    const point = new Point(
-                        this.index + i,
-                        this.pointGap * i,
-                        this.centerY + this.centerY / 2
-                    );
-                    this.points[i] = point;
-                }
-            }
-
-            draw(ctx) {
-                ctx.beginPath();
-                ctx.fillStyle = this.color;
-
-                let prevX = this.points[0].x;
-                let prevY = this.points[0].y;
-
-                ctx.moveTo(prevX, prevY);
-
-                for (let i = 0; i < this.totalPoints; i++) {
-                    if (i < this.totalPoints - 1) {
-                        this.points[i].update();
-                    }
-
-                    const cx = (prevX + this.points[i].x) / 2;
-                    const cy = (prevY + this.points[i].y) / 2;
-
-                    ctx.quadraticCurveTo(prevX, prevY, cx, cy);
-
-                    prevX = this.points[i].x;
-                    prevY = this.points[i].y;
+            for (let i = 0; i < this.totalPoints; i++) {
+                if (i < this.totalPoints - 1) {
+                    this.points[i].update();
                 }
 
-                ctx.lineTo(prevX, prevY);
-                ctx.lineTo(this.width, this.height);
-                ctx.lineTo(this.points[0].x, this.height);
-                ctx.fill();
-                ctx.closePath();
+                const cx = (prevX + this.points[i].x) / 2;
+                const cy = (prevY + this.points[i].y) / 2;
+
+                ctx.quadraticCurveTo(prevX, prevY, cx, cy);
+
+                prevX = this.points[i].x;
+                prevY = this.points[i].y;
+            }
+
+            ctx.lineTo(prevX, prevY);
+            ctx.lineTo(this.width, this.height);
+            ctx.lineTo(this.points[0].x, this.height);
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+
+    class WaveGroup {
+        constructor() {
+            this.totalWaves = 3;
+            this.totalPoints = 20;
+
+            this.waves = [];
+            this.colors = [
+                "rgba(254, 199, 221, 0.4)",
+                "rgba(188, 224, 254, 0.4)",
+                "rgba(205, 180, 219, 0.4)"
+            ];
+
+            for (let i = 0; i < this.totalWaves; i++) {
+                const wave = new Wave(i, this.totalPoints, this.colors[i]);
+                this.waves[i] = wave;
             }
         }
 
-        class WaveGroup {
-            constructor() {
-                this.totalWaves = 3;
-                this.totalPoints = 20;
-
-                this.waves = [];
-                this.colors = [
-                    "rgba(254, 199, 221, 0.4)",
-                    "rgba(188, 224, 254, 0.4)",
-                    "rgba(205, 180, 219, 0.4)"
-                ];
-
-                for (let i = 0; i < this.totalWaves; i++) {
-                    const wave = new Wave(i, this.totalPoints, this.colors[i]);
-                    this.waves[i] = wave;
-                }
-            }
-
-            resize(canvasWidth, canvasHeight) {
-                for (let i = 0; i < this.totalWaves; i++) {
-                    const wave = this.waves[i];
-                    wave.resize(canvasWidth, canvasHeight);
-                }
-            }
-
-            draw(ctx) {
-                for (let i = 0; i < this.totalWaves; i++) {
-                    const wave = this.waves[i];
-                    wave.draw(ctx);
-                }
+        resize(canvasWidth, canvasHeight) {
+            for (let i = 0; i < this.totalWaves; i++) {
+                const wave = this.waves[i];
+                wave.resize(canvasWidth, canvasHeight);
             }
         }
 
-        class App {
-            constructor() {
-                this.canvas = document.querySelector("#testCanvas");
-                this.ctx = this.canvas.getContext("2d");
-
-                this.waveGroup = new WaveGroup();
-
-                window.addEventListener("resize", this.resize.bind(this));
-                this.resize();
-                this.animate();
-            }
-
-            resize() {
-                this.canvasWidth = document.body.clientWidth;
-                this.canvasHeight = document.body.clientHeight;
-
-                this.canvas.width = this.canvasWidth * 2;
-                this.canvas.height = this.canvasHeight * 2;
-                this.ctx.scale(2, 2);
-
-                this.waveGroup.resize(this.canvasWidth, this.canvasHeight);
-            }
-
-            animate() {
-                this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-
-                this.waveGroup.draw(this.ctx);
-                requestAnimationFrame(this.animate.bind(this));
+        draw(ctx) {
+            for (let i = 0; i < this.totalWaves; i++) {
+                const wave = this.waves[i];
+                wave.draw(ctx);
             }
         }
+    }
 
-        const app = new App();
+    class App {
+        constructor() {
+            this.canvas = document.querySelector("#testCanvas");
+            this.ctx = this.canvas.getContext("2d");
+
+            this.waveGroup = new WaveGroup();
+
+            window.addEventListener("resize", this.resize.bind(this));
+            this.resize();
+            this.animate();
+        }
+
+        resize() {
+            this.canvasWidth = document.body.clientWidth;
+            this.canvasHeight = document.body.clientHeight;
+
+            this.canvas.width = this.canvasWidth * 2;
+            this.canvas.height = this.canvasHeight * 2;
+            this.ctx.scale(2, 2);
+
+            this.waveGroup.resize(this.canvasWidth, this.canvasHeight);
+        }
+
+        animate() {
+            this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+
+            this.waveGroup.draw(this.ctx);
+            requestAnimationFrame(this.animate.bind(this));
+        }
+    }
+
+    const app = new App();
     </script>
 </body>
 </html>
