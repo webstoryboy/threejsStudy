@@ -71,12 +71,12 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            for ( var i = 0; i < 50;i++ ){	
+            for (var i = 0; i < 50; i++){	
                 var mesh = obj['mesh'+i];
                 var meshZ = obj['meshZ'+i];
                 mesh.rotation.x += ((window.innerWidth * .5) - mouseY) * .00002;
                 mesh.rotation.y += ((window.innerHeight * .5) - mouseX) * .00002;
-                mesh.position.z = meshZ + ((window.innerHeight * .5) - mouseY);
+                //mesh.position.z = meshZ + ((window.innerHeight * .5) - mouseY);
             }
 
             renderer.render(scene, camera);
