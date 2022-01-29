@@ -57,6 +57,30 @@
         pointLight.position.set(200, -100, 50);
         
         scene.add(ambientLight, directionalLight, pointLight);
+        
+        //별 설정
+        let material = new THREE.PointsMaterial({
+            color: 0xffffff,
+            size: 2,
+            transparent: true,
+            blending: THREE.AdditiveBlending
+        });
+
+        let particleCount = 15000;
+        let particles = new THREE.Geometry();
+
+        for (var i = 0; i < particleCount; i++) {
+            var px = Math.random() * 2000 - 1000;
+            var py = Math.random() * 2000 - 1000;
+            var pz = Math.random() * 2000 - 1000;
+            particle = new THREE.Vector3(px, py, pz);
+            particle.velocity = new THREE.Vector3(0, Math.random(), 0);
+            particles.vertices.push(particle);
+        }
+
+        let points = new THREE.Points(particles, material);
+        points.sortParticles = true;
+        scene.add(points);
 
         //애니메이션 설정
         function animate() {
@@ -70,6 +94,20 @@
                 rocket.rotation.y += 0.1;
                 rocket.position.y = delta;
             }
+
+            var i = particleCount;
+            while(i--){
+                var particle = particles.vertices[i];
+
+                if(particle.y > 1000){
+                    particle.y = -1000;
+                    particle.velocity.y = Math.random();
+                }
+                particle.velocity.y += Math.random() * 0.001;
+
+                particle.add(particle.velocity);
+            }
+            points.geometry.verticesNeedUpdate = true;
 
             renderer.render(scene, camera);
         }
