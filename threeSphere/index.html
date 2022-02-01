@@ -8,6 +8,11 @@
     <style>
         body {
             margin: 0;
+            width: 100%;
+            height: 100vh;
+        }
+        canvas {
+            background: #caffde;
         }
     </style>
 </head>
@@ -27,10 +32,10 @@
 
     //렌더링 설정
     var renderer = new THREE.WebGLRenderer({
-        canvas: document.getElementById("webgl-canvas")
+        canvas: document.getElementById("webgl-canvas"),
+        alpha: true
     });
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setClearColor(new THREE.Color(0xffffff));
     renderer.setSize(window.innerWidth, window.innerHeight);
     
     //모양 설정
@@ -44,11 +49,11 @@
 
     //조명 설정
     const ambientlight = new THREE.AmbientLight(0xffffff, 1);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
     directionalLight.position.set(1, 1, 1);
 
     scene.add(ambientlight);
-    //scene.add(directionalLight);
+    scene.add(directionalLight);
 
     //애니메이션 설정
     function animate() {
