@@ -17,11 +17,10 @@ threejs : https://webstoryboy.github.io/threejsStudy/threeHeart2/index.html <br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeElephant/index.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeSphere/index.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeGeometry/index.html <br><br>
-
+threejs : https://webstoryboy.github.io/threejsStudy/threeText/index.html <br><br>
 
 canvas : https://webstoryboy.github.io/threejsStudy/canvasCircle/index.html <br><br>
 canvas : https://webstoryboy.github.io/threejsStudy/canvasPoints/index.html <br><br>
 canvas : https://webstoryboy.github.io/threejsStudy/canvasWaves/index.html <br><br>
 canvas : https://webstoryboy.github.io/threejsStudy/canvasParticles/index.html <br><br>
 canvas : https://webstoryboy.github.io/threejsStudy/canvasLines/index.html <br><br>
- 
