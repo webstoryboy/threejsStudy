@@ -18,6 +18,7 @@ threejs : https://webstoryboy.github.io/threejsStudy/threeElephant/index.html <b
 threejs : https://webstoryboy.github.io/threejsStudy/threeSphere/index.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeGeometry/index.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeText/index.html <br><br>
+threejs : https://webstoryboy.github.io/threejsStudy/threeText2/index.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeOrbiting/index.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threelookAt/index.html <br><br>
 
