@@ -30,6 +30,7 @@ threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index6.html <br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index7.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index8.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index9.html <br><br>
+threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index10.html  <br><br>
 
 canvas : https://webstoryboy.github.io/threejsStudy/canvasCircle/index.html <br><br>
 canvas : https://webstoryboy.github.io/threejsStudy/canvasPoints/index.html <br><br>
