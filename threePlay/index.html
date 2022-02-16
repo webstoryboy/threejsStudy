@@ -12,6 +12,7 @@
             width: 100%;
             height: 100vh;
             overflow: hidden;
+            background: url(https://i.ibb.co/JCsHJpp/stars2-qx9prz.jpg) center / cover;
         }
     </style>
 </head>
@@ -22,14 +23,12 @@
     <script>
     //화면 생성
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color( 0xff0000 );
 
     //카메라 설정
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000)
     camera.position.y = 160;
     camera.position.z = 400;
     
-
     //렌더링 설정
     renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -37,11 +36,6 @@
     document.body.appendChild(renderer.domElement);
 
     //메쉬 설정
-    var skyboxGeometry = new THREE.CubeGeometry(10000, 10000, 10000);
-    var skyboxMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.BackSide });
-    var skybox = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
-    scene.add(skybox);
-
     var octahedronGeometry = new THREE.OctahedronGeometry(25);
     var octahedronMaterial = new THREE.MeshPhongMaterial({
         color: 0xFF0000, 
