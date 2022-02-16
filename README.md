@@ -21,6 +21,7 @@ threejs : https://webstoryboy.github.io/threejsStudy/threeText/index.html <br><b
 threejs : https://webstoryboy.github.io/threejsStudy/threeText2/index.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeOrbiting/index.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threelookAt/index.html <br><br>
+threejs : https://webstoryboy.github.io/threejsStudy/threePlay/index.html <br><br>
 
 threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index2.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index3.html <br><br>
@@ -31,6 +32,7 @@ threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index7.html <br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index8.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index9.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index10.html  <br><br>
+threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index11.html  <br><br>
 
 canvas : https://webstoryboy.github.io/threejsStudy/canvasCircle/index.html <br><br>
 canvas : https://webstoryboy.github.io/threejsStudy/canvasPoints/index.html <br><br>
