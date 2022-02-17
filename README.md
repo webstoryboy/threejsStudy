@@ -22,6 +22,7 @@ threejs : https://webstoryboy.github.io/threejsStudy/threeText2/index.html <br><
 threejs : https://webstoryboy.github.io/threejsStudy/threeOrbiting/index.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threelookAt/index.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threePlay/index.html <br><br>
+threejs : https://webstoryboy.github.io/threejsStudy/threeBlob/index.html <br><br>
 
 threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index2.html <br><br>
 threejs : https://webstoryboy.github.io/threejsStudy/threeBasic/index3.html <br><br>
